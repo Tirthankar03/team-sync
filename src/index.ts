@@ -7,6 +7,8 @@ import connectDatabase from "./config/database.config";
 import { errorHandler } from "./middlewares/errorHandler.middleware";
 import { asyncHandler } from "./middlewares/asyncHandler.middleware";
 import { HTTPSTATUS } from "./config/http.config";
+import { BadRequestException } from "./utils/appError";
+import { ErrorCodeEnum } from "./enums/error-code.enum";
 
 
 const app = express();
@@ -43,6 +45,10 @@ app.use(
   app.get(
     `/`,
     asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
+      throw new BadRequestException(
+        "This is a bad request",
+        ErrorCodeEnum.AUTH_INVALID_TOKEN
+      );
       return res.status(HTTPSTATUS.OK).json({
         message: "Hello Subscribe to the channel & share",
       });
