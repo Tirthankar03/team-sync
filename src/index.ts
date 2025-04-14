@@ -4,6 +4,9 @@ import cors from "cors";
 import session from "cookie-session";
 import { config } from "./config/app.config";
 import connectDatabase from "./config/database.config";
+import { errorHandler } from "./middlewares/errorHandler.middleware";
+import { asyncHandler } from "./middlewares/asyncHandler.middleware";
+import { HTTPSTATUS } from "./config/http.config";
 
 
 const app = express();
@@ -37,9 +40,16 @@ app.use(
   );
 
 
-  app.get('/', (req, res) => {
-    res.send('Hello World!')
-  })
+  app.get(
+    `/`,
+    asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
+      return res.status(HTTPSTATUS.OK).json({
+        message: "Hello Subscribe to the channel & share",
+      });
+    })
+  );
+
+  app.use(errorHandler);
 
   app.listen(config.PORT, async () => {
     console.log(`Server listening on port ${config.PORT} in ${config.NODE_ENV}`);
