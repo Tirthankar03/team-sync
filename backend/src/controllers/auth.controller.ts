@@ -1,6 +1,9 @@
 import { NextFunction, Request, Response } from "express";
 import { asyncHandler } from "../middlewares/asyncHandler.middleware";
 import { config } from "../config/app.config";
+import { registerSchema } from "../validation/auth.validation";
+import { registerUserService } from "../services/auth.service";
+import { HTTPSTATUS } from "../config/http.config";
 
 export const googleLoginCallback = asyncHandler(
     async (req: Request, res: Response) => {
@@ -18,3 +21,18 @@ export const googleLoginCallback = asyncHandler(
       );
     }
   );  
+
+  export const registerUserController = asyncHandler(
+    async (req: Request, res: Response) => {
+      const body = registerSchema.parse({
+        ...req.body,
+      });
+  
+      await registerUserService(body);
+  
+      return res.status(HTTPSTATUS.CREATED).json({
+        message: "User created successfully",
+      });
+    }
+  );
+  
