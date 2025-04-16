@@ -23,6 +23,7 @@ export const errorHandler: ErrorRequestHandler = (
   res,
   next
 ): any => {
+  
   if (error instanceof SyntaxError) {
     return res.status(HTTPSTATUS.BAD_REQUEST).json({
       message: "Invalid JSON format. Please check your request body.",
