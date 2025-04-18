@@ -135,7 +135,7 @@ const SignIn = () => {
                       </div>
                       <Button
                         type="submit"
-                        className="w-full"
+                        className="w-full cursor-pointer"
                       >
                         Login
                       </Button>

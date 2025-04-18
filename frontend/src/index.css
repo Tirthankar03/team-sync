@@ -3,7 +3,6 @@
 @plugin "tailwindcss-animate";
 @custom-variant dark (&:is(.dark *));
 
-
 html,
 hody {
   height: 100%;
@@ -41,7 +40,6 @@ em-emoji-picker {
 .scrollbar:hover::-webkit-scrollbar-thumb {
   background-color: darkgray; /* Hover effect */
 }
-
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
