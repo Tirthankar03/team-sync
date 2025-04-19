@@ -1,7 +1,3 @@
-Here’s a clean, well-organized, and **verbose README.md** for your **Team Sync** project that you can use directly on GitHub:
-
----
-
 # 🧠 Team Sync
 
 **Team Sync** is a modern, collaborative project management tool designed to help teams plan, track, and manage work seamlessly across multiple workspaces. Whether you're managing a startup or organizing team tasks in a classroom, Team Sync makes collaboration intuitive, organized, and efficient.
